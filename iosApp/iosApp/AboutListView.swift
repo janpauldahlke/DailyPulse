@@ -55,3 +55,8 @@ struct AboutListView: View {
     }
  
 }
+
+
+#Preview {
+    AboutListView()
+}
