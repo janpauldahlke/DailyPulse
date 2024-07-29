@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.petros.efthymiou.dailypulse.Greeting
 
@@ -17,6 +18,7 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
+                    //color = Color(255, 255, 0,100)
                     color = MaterialTheme.colorScheme.background
                 ) {
                     GreetingView(Greeting().greet())
