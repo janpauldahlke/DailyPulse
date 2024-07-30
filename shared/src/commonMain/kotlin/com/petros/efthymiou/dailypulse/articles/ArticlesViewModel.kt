@@ -11,7 +11,13 @@ class ArticlesViewModel: BaseViewModel() {
     // compare to observable
     // inner mutable private, exposed public not mutable
     // kotlin flow vs kotlin state flow
-    private val _articlesState : MutableStateFlow<ArticlesState> = MutableStateFlow(ArticlesState(loading = true))
+    private val _articlesState : MutableStateFlow<ArticlesState> = MutableStateFlow(ArticlesState
+        (
+        loading = true,
+        articles = listOf(),
+        error = null
+        )
+    )
     val articlesState: StateFlow<ArticlesState> get() = _articlesState
 
     //interesting like a lifecycle hook in angular
@@ -22,10 +28,21 @@ class ArticlesViewModel: BaseViewModel() {
     private fun getArticles() {
         scope.launch {
             // suspend functions can only be called inside coroutines
+
+            delay(1500)
+            _articlesState.emit(ArticlesState(
+                loading = false,
+                error = "oops an error!"
+            ))
+
+            delay(1000)
             val fetchedArticles = fetchArticles()
-            //imitate network
-            delay(200)
-            _articlesState.emit(ArticlesState(article = fetchedArticles))
+
+            _articlesState.emit(ArticlesState(
+                articles = fetchedArticles,
+                loading = false,
+                error = null
+            ))
         }
     }
 
