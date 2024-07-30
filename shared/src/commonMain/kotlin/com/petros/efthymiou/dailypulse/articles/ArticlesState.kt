@@ -1,5 +1,7 @@
 package com.petros.efthymiou.dailypulse.articles
 
-class ArticlesState {
-
-}
+data class ArticlesState(
+    val article: List<Article> = listOf(),
+    val loading: Boolean = false,
+    val error: String? = null
+)
