@@ -11,7 +11,7 @@ class ArticlesViewModel: BaseViewModel() {
     // compare to observable
     // inner mutable private, exposed public not mutable
     // kotlin flow vs kotlin state flow
-    private val _articlesState : MutableStateFlow<ArticlesState> = MutableStateFlow(ArticlesState())
+    private val _articlesState : MutableStateFlow<ArticlesState> = MutableStateFlow(ArticlesState(loading = true))
     val articlesState: StateFlow<ArticlesState> get() = _articlesState
 
     //interesting like a lifecycle hook in angular
@@ -21,11 +21,15 @@ class ArticlesViewModel: BaseViewModel() {
 
     private fun getArticles() {
         scope.launch {
+            // suspend functions can only be called inside coroutines
+            val fetchedArticles = fetchArticles()
             //imitate network
             delay(200)
-            _articlesState.emit(ArticlesState())
+            _articlesState.emit(ArticlesState(article = fetchedArticles))
         }
     }
+
+    suspend fun fetchArticles(): List<Article> = mockArticles
 
 
     //mocks for now
@@ -43,7 +47,7 @@ class ArticlesViewModel: BaseViewModel() {
             "https://i.imgur.com/XPDNoTX.jpeg"
         ),
         Article(
-            "Heisenberg invents new Cult of Cthulhu",
+            "Heisenberg invents new Cult for  Cthulhu",
             "Short ribs picanha landjaeger pork loin, spare ribs meatball burgdoggen. Pork landjaeger buffalo cupim bresaola spare ribs pork loin biltong tail hamburger. Frankfurter pig meatloaf bacon pork chop biltong flank landjaeger, buffalo ground round turkey short ribs turducken. Pork loin hamburger pig, kevin tongue t-bone biltong bacon meatloaf doner corned beef pork belly chicken shoulder. Chuck turducken swine filet mignon, bacon biltong fatback pork loin.",
             "11.07.2024",
             "https://i.imgur.com/3NI3Tod.jpeg"
