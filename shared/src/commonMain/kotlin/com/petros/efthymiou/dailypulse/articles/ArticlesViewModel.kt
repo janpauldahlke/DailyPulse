@@ -29,7 +29,7 @@ class ArticlesViewModel: BaseViewModel() {
         scope.launch {
             // suspend functions can only be called inside coroutines
 
-            delay(1500)
+            delay(1000)
             _articlesState.emit(ArticlesState(
                 loading = false,
                 error = "oops an error!"

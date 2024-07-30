@@ -11,7 +11,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        AboutScreen()
+        ArticlesScreen(viewModel: .init())
+        //AboutScreen()
     }
     
     struct ContentView_Previews: PreviewProvider {
