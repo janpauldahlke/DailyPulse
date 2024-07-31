@@ -31,6 +31,9 @@ kotlin {
             dependencies {
                 //put your multiplatform dependencies here
                 implementation(libs.kotlinx.coroutines.core)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.ktor.serialization.kotlinx.json)
             }
         }
 
@@ -44,12 +47,13 @@ kotlin {
                 // how to know about which ones are the correct deps here?
                 // it will be added here gradle/libs.versions.toml
                 implementation(libs.androidx.lifecycle.viewmodel.ktx)
+                implementation(libs.ktor.client.android)
             }
         }
 
         val iosMain by getting {
             dependencies {
-
+                implementation(libs.ktor.client.darwin)
             }
         }
 
