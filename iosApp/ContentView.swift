@@ -10,9 +10,29 @@ import shared
 import SwiftUI
 
 struct ContentView: View {
+    
+    
+    @State private var isAboutOpen = false
+    
     var body: some View {
-        ArticlesScreen(viewModel: .init())
-        //AboutScreen()
+        
+        NavigationStack {
+            ArticlesScreen(viewModel: .init())
+                .toolbar {
+                    ToolbarItem {
+                        Button {
+                            isAboutOpen = true
+                        } label: {
+                            Label("About", systemImage: "info.circle").labelStyle(.titleAndIcon)
+                        }.popover(isPresented: $isAboutOpen) {
+                            AboutScreen()
+                        }
+                    }
+                }
+        }
+        
+        
+        
     }
     
     struct ContentView_Previews: PreviewProvider {
