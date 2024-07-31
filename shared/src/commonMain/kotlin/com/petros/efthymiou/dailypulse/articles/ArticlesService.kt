@@ -8,7 +8,7 @@ class ArticlesService(
     private val httpClient: HttpClient
 ) {
     private val country = "us";
-    private val newsCategory = "NASA"
+    private val newsCategory = "sport"
     //not worries, this is totally safe, isnt it?
     private val apiKey = "4d7e13f5123b4d41beab6a2a3fd74a8d"
     // combined fields
@@ -16,6 +16,7 @@ class ArticlesService(
 
     suspend fun fetchArticles() : List<ArticleRaw>{
         val response: ArticlesResponse = httpClient.get(API_URL).body()
+        println("---> fetched ${response.articles}")
         return response.articles
     }
 }

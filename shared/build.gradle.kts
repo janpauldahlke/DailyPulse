@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     id("co.touchlab.skie") version "0.4.19"
     // adds serializable plugin here for @Serializable
-    kotlin("plugin.serialization") version "1.9.20"
+    kotlin("plugin.serialization") version  "2.0.20-RC"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
