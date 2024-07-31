@@ -25,6 +25,7 @@ class ArticlesViewModel: BaseViewModel() {
     val articlesState: StateFlow<ArticlesState> get() = _articlesState
 
     //bring usecase to connect network
+    //
     private val useCase : ArticlesUseCase;
     suspend fun fetchArticles(): List<Article> = useCase.getArticles()
 
