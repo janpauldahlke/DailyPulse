@@ -8,7 +8,8 @@ class ArticlesService(
     private val httpClient: HttpClient
 ) {
     private val country = "us";
-    private val newsCategory = "sport"
+    // Possible options: business entertainment general health science sports technology. Default: all categories.
+    private val newsCategory = "business"
     //not worries, this is totally safe, isnt it?
     private val apiKey = "4d7e13f5123b4d41beab6a2a3fd74a8d"
     // combined fields

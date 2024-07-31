@@ -16,8 +16,6 @@ data class ArticlesResponse(
 
 @Serializable
 data class ArticleRaw(
-    @SerialName("author")
-    val author: String,
     @SerialName("title")
     val title: String,
     @SerialName("description")

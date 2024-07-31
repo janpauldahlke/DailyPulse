@@ -11,7 +11,7 @@ class ArticlesUseCase(
     private fun mapArticles(rawArticles: List<ArticleRaw>): List<Article> =
         rawArticles.map { article ->
             Article(
-                article.title,
+                article.title ,
                 description = article.description ?: "No description available",
                 article.publishedAt,
                 imageURL = article.imageURL ?: "placeholder"
