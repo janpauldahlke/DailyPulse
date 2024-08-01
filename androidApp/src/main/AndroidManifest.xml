@@ -3,8 +3,10 @@
 
     <!-- we need this to download the images from imgur-->
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <!-- DO NOT FORGET!!! define the name of the entryPoint-->
+    <!--   android:name=".DailyPulseApplication" -->
     <application
+        android:name=".DailyPulseApplication"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">

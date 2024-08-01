@@ -19,7 +19,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         //interesting syntax
-        val articlesViewModel: ArticlesViewModel by viewModels()
+        //val articlesViewModel: ArticlesViewModel by viewModels()
+
+
 
         setContent {
             MyApplicationTheme {
@@ -27,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ApplicationScaffold(articlesViewModel = articlesViewModel)
+                    ApplicationScaffold()
                 }
             }
         }

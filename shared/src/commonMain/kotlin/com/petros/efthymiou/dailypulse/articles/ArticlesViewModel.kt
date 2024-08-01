@@ -10,7 +10,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 
-class ArticlesViewModel: BaseViewModel() {
+class ArticlesViewModel(
+    private val useCase: ArticlesUseCase
+): BaseViewModel() {
     // in corortines streams are called flows
     // compare to observable
     // inner mutable private, exposed public not mutable
@@ -23,25 +25,10 @@ class ArticlesViewModel: BaseViewModel() {
         )
     )
     val articlesState: StateFlow<ArticlesState> get() = _articlesState
-
-    //bring usecase to connect network
-    private val useCase : ArticlesUseCase;
     suspend fun fetchArticles(): List<Article> = useCase.getArticles()
 
     //interesting like a lifecycle hook in angular
     init {
-        val ktorHttpClient = HttpClient {
-            install(ContentNegotiation) {
-                json(Json {
-                    prettyPrint = true
-                    isLenient = true
-                    ignoreUnknownKeys = true
-                })
-            }
-        }
-
-        val service= ArticlesService(ktorHttpClient)
-        useCase = ArticlesUseCase(service)
         getArticles()
     }
 
