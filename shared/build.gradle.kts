@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     id("co.touchlab.skie") version "0.4.19"
     // adds serializable plugin here for @Serializable
-    kotlin("plugin.serialization") version  "2.0.20-RC"
+    kotlin("plugin.serialization") version  "1.9.10"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -36,6 +36,7 @@ kotlin {
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.content.negotiation)
                 implementation(libs.ktor.serialization.kotlinx.json)
+                implementation(libs.kotlinx.datetime)
             }
         }
 
